@@ -45,6 +45,7 @@ body{
     margin:0 15px;
     padding:8px;
     transition: all .2s linear;
+
   }
 
   &__drop-box__item {
@@ -55,4 +56,16 @@ body{
     margin: 4px 0;
   }
 }
+
+.hidden {
+  display: none;
+}
+
+.grey{
+  background-color: rgba(0, 0, 0, .2);
+  &:hover{
+      background-color: rgba(0, 0, 0, .2);
+    }
+}    
+
 

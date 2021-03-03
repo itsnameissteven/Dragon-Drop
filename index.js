@@ -1,56 +1,54 @@
-const items = document.querySelectorAll('.item');
-const dropContainers = document.querySelectorAll('.container__drop-box')
-
-let draggedItem;
-
-
-
-
-items.forEach( item => {
-  item.addEventListener("dragstart", function() {
-    draggedItem = this
-    setTimeout(() => {
-      this.style.display = 'none'
-    }, 0)
-  })
-
-  item.addEventListener("dragend", function(e) {
-    setTimeout(() => {
-      this.style.display = 'block'
-      draggedItem = null;
-    }, 0);
-  })
-
-
-  dropContainers.forEach( container => {
-    let box = container;
-
-    box.addEventListener('dragover', function(e) {
-      e.preventDefault();
-    })
-
-    box.addEventListener('dragenter', function(e) {
-      e.preventDefault();
-      this.style.backgroundColor = 'rgba(0, 0, 0, .2)';
-    })
-
-    box.addEventListener('dragleave', function(e) {
-      this.style.backgroundColor = 'rgba(0,0,0, 0.1)';
-    })
-
-    box.addEventListener('drop', function(e) {
-      this.append(draggedItem);
-      this.style.backgroundColor = 'rgba(0,0,0, 0.1)';
-    })
-
-  })
-})
-
-
 class Dragon {
   constructor(draggableItem, dropBox) {
     this.items = document.querySelectorAll(draggableItem || '.item');
-    this.dropContainers = document.querySelectorAll(dropBox || '.container__drop-box')
+    this.dropBoxes = document.querySelectorAll(dropBox || '.container__drop-box')
     this.draggedItem = null;
   }
+
+  selectElement() {
+    this.items.forEach(item => {
+      item.addEventListener("dragstart", () => {
+        this.draggedItem = item;
+        setTimeout(() => {
+          this.addToClassList(item, "hidden", true);
+        }, 0);
+      });
+      this.releaseElement(item);
+      this.dropItem()
+    })
+  }
+
+  releaseElement(element) {
+    element.addEventListener("dragend", () => {
+    setTimeout(() => {
+      this.addToClassList(element, 'hidden')
+      this.draggedItem = null;
+    }, 0);
+  })
+  }
+
+  dropItem() {
+    this.dropBoxes.forEach( box => {
+      box.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        this.addToClassList(box, 'grey', true);
+      });
+      box.addEventListener('dragleave', () => {
+        this.addToClassList(box, 'grey');
+      });
+      box.addEventListener('drop', () => {
+        box.append(this.draggedItem);
+        this.addToClassList(box, 'grey');
+      });
+    });
+  }
+
+  addToClassList(element, className, add) {
+    add ? element.classList.add(className) : 
+      element.classList.remove(className);
+  }
 }
+
+let test = new Dragon();
+test.selectElement();
+
