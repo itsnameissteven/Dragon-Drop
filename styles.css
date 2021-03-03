@@ -15,8 +15,7 @@ body{
   height:100vh;
   width:100%;
   flex-wrap: wrap;
-  /* justify-items: space-around; */
-  /* align-content: space-around; */
+  padding-bottom: 50px
 }
 
 .header {
@@ -30,18 +29,15 @@ body{
   display: flex;
   flex:1;
   width:100%;
-  /* overflow-x: scroll; */
   margin: 0;
-  /* border: 2px solid red;
-  width:25%;
-  height: 80vh */
 }
 
-.list-container {
+.drop-container {
   display: flex;
   flex-flow:column;
   flex:1;
   width: 100%;
+  border-radius: 6px;
   min-width: 250px;
   max-width:350;
   height: 100%;
