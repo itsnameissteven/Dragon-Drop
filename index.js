@@ -1,7 +1,10 @@
 const items = document.querySelectorAll('.item');
-const dropContainers = document.querySelectorAll('.drop-container')
+const dropContainers = document.querySelectorAll('.container__drop-box')
 
 let draggedItem;
+
+
+
 
 items.forEach( item => {
   item.addEventListener("dragstart", function() {
@@ -42,3 +45,12 @@ items.forEach( item => {
 
   })
 })
+
+
+class Dragon {
+  constructor(draggableItem, dropBox) {
+    this.items = document.querySelectorAll(draggableItem || '.item');
+    this.dropContainers = document.querySelectorAll(dropBox || '.container__drop-box')
+    this.draggedItem = null;
+  }
+}

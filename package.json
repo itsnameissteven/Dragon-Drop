@@ -1,13 +1,13 @@
 {
   "name": "dragon-drop",
   "version": "1.0.0",
-  "main": "main.js",
-  "dependencies": {
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
     "node-sass": "^5.0.0"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile:sass": "node-sass index.scss styles.css -w"
   },
   "author": "",
   "license": "ISC",
