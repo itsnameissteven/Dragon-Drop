@@ -31,14 +31,14 @@ class Dragon {
     this.dropBoxes.forEach( box => {
       box.addEventListener('dragover', (e) => {
         e.preventDefault();
-        this.addToClassList(box, 'grey', true);
+        this.addToClassList(box, 'hover', true);
       });
       box.addEventListener('dragleave', () => {
-        this.addToClassList(box, 'grey');
+        this.addToClassList(box, 'hover');
       });
       box.addEventListener('drop', () => {
         box.append(this.draggedItem);
-        this.addToClassList(box, 'grey');
+        this.addToClassList(box, 'hover');
       });
     });
   }
@@ -51,4 +51,3 @@ class Dragon {
 
 let test = new Dragon();
 test.selectElement();
-

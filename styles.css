@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box; }
 
+*::-webkit-scrollbar {
+  display: none; }
+
 body {
   background-color: #8cc2d4;
   min-height: 100vh; }
@@ -24,6 +27,7 @@ body {
 .container {
   display: flex;
   flex: 1;
+  height: 80%;
   width: 100%;
   margin: 0; }
   .container__drop-box {
@@ -33,9 +37,9 @@ body {
     width: 100%;
     border-radius: 6px;
     min-width: 250px;
-    max-width: 350;
+    max-width: 350px;
     height: 100%;
-    min-height: 150px;
+    min-height: 250px;
     background-color: rgba(0, 0, 0, 0.1);
     margin: 0 15px;
     padding: 8px;
@@ -50,7 +54,16 @@ body {
 .hidden {
   display: none; }
 
-.grey {
+.hover {
   background-color: rgba(0, 0, 0, 0.2); }
-  .grey:hover {
-    background-color: rgba(0, 0, 0, 0.2); }
+
+.drop {
+  animation: dropEffect .5s ease-in-out; }
+
+@keyframes dropEffect {
+  0% {
+    opacity: 1;
+    transform: scale(1); }
+  100% {
+    opacity: 0;
+    transform: scale(0); } }
