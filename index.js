@@ -49,5 +49,5 @@ class Dragon {
   }
 }
 
-let test = new Dragon();
-test.selectElement();
+let dragAndDrop = new Dragon();
+dragAndDrop.selectElement();
